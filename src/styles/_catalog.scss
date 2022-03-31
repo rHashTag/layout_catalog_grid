@@ -1,6 +1,22 @@
+// Variables
+$card-width: 200px;
+$card-gap: 48px;
+$screen-widths:
+  "488px" 2,
+  "768px" 3,
+  "1024px" 4;
+
+// Cataolog styling
 .catalog {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+
+  @each $screen-width, $card-count in $screen-widths {
+    @media (min-width: $screen-width) {
+      grid-template-columns: repeat($card-count, $card-width);
+    }
+  }
+  justify-content: center;
+  gap: $card-gap;
 
   max-width: 944px;
   margin: 0 auto;
@@ -9,14 +25,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: $card-width;
     height: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 48px;
-  }
 
-  &__card:not(:nth-child(4n)) {
-    margin-right: 48px;
+    // Not sure if gap between cards is only for row or for both row and column
+
+    // margin-bottom: $card-gap;
   }
 }
