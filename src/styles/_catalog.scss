@@ -2,15 +2,15 @@
 $card-width: 200px;
 $card-gap: 48px;
 $screen-widths:
-  "488px" 2,
-  "768px" 3,
-  "1024px" 4;
+  2 "488px",
+  3 "768px",
+  4 "1024px";
 
 // Cataolog styling
 .catalog {
   display: grid;
 
-  @each $screen-width, $card-count in $screen-widths {
+  @each $card-count, $screen-width in $screen-widths {
     @media (min-width: $screen-width) {
       grid-template-columns: repeat($card-count, $card-width);
     }
@@ -19,7 +19,6 @@ $screen-widths:
   gap: $card-gap;
 
   max-width: 944px;
-  margin: 0 auto;
 
   &__card {
     display: flex;
